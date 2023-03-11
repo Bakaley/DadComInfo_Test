@@ -27,8 +27,6 @@ namespace States.MonsterStates
         {
             if(_attackingCoroutine != null) stateController.StopCoroutine(_attackingCoroutine);
             stateController.AnimatorController.OnAttackApplyEffect -= AttackApplyHandler;
-            if(stateController.CurrentHP <= 0) stateController.SwitchState(stateController.States[typeof(MonsterDeadState)]);
-            else stateController.SwitchState(stateController.States[typeof(MonsterStaggeringState)]);
         }
 
         public override void Update()

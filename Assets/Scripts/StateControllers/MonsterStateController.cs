@@ -108,6 +108,8 @@ namespace StateControllers
             {
                 CurrentHP -= player.Config.OnHitDamage;
                 currentState.OnReceiveHit();
+                if(CurrentHP <= 0) SwitchState(States[typeof(MonsterDeadState)]);
+                else SwitchState(States[typeof(MonsterStaggeringState)]);
             }
         }
     }

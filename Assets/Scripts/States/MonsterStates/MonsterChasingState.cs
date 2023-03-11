@@ -20,8 +20,7 @@ namespace States.MonsterStates
 
         public override void OnReceiveHit()
         {
-            if(stateController.CurrentHP <= 0) stateController.SwitchState(stateController.States[typeof(MonsterDeadState)]);
-            else stateController.SwitchState(stateController.States[typeof(MonsterStaggeringState)]);
+            
         }
 
         public override void Update()

@@ -17,3 +17,5 @@ MonoBehaviour:
   _hpIncreasPerDeath: 1
   _attackDuration: 2
   _staggeringDuration: 0.75
+  _respawnCooldown: 5
+  _respawnRadius: 75

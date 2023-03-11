@@ -3,15 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using StateControllers;
 using UnityEngine;
-using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class Level : MonoBehaviour
 {
     private Coroutine _spawnCoroutine;
-    private float _spawnAcrossPlayerRadius = 75;
     [SerializeField] private MonsterStateController _monsterCharacter;
-    [SerializeField] private float _spawnInterval = 5;
 
     [SerializeField] private PlayerStateController _playerPrefabSampler;
     [SerializeField] private Transform _playerSpawnPoint;
@@ -81,7 +78,7 @@ public class Level : MonoBehaviour
     private void OnMonsterDieHandler(BattleCharacterStateController monster)
     {
         CurrentScore++;
-        StartCoroutine(MonsterRespawnCoroutine((MonsterStateController)monster, _spawnInterval));
+        StartCoroutine(MonsterRespawnCoroutine((MonsterStateController)monster, _monsterCharacter.Config.RespawnCooldown));
     }
 
     private IEnumerator MonsterRespawnCoroutine(MonsterStateController monster, float respawnInterval)
@@ -93,8 +90,8 @@ public class Level : MonoBehaviour
     private Vector3 CalculateNewMonsterSpawnPosition()
     {
         int angle = Random.Range(0, 360);
-        float x = _player.transform.position.x + _spawnAcrossPlayerRadius * Mathf.Cos(angle);
-        float z = _player.transform.position.z + _spawnAcrossPlayerRadius * Mathf.Sin(angle);
+        float x = _player.transform.position.x + _monsterCharacter.Config.RespawnRadius * Mathf.Cos(angle);
+        float z = _player.transform.position.z + _monsterCharacter.Config.RespawnRadius * Mathf.Sin(angle);
         return new Vector3(x, _player.transform.position.y, z);
     }
 }

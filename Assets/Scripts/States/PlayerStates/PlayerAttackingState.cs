@@ -27,8 +27,7 @@ namespace States.PlayerStates
         {
             if(_attackingCoroutine != null) stateController.StopCoroutine(_attackingCoroutine);
             stateController.AnimatorController.OnAttackApplyEffect -= AttackApplyHandler;
-            if(stateController.CurrentHP <= 0) stateController.SwitchState(stateController.States[typeof(PlayerDeadState)]);
-            else stateController.SwitchState(stateController.States[typeof(PlayerStaggeringState)]);
+
         }
 
         public override void Update()

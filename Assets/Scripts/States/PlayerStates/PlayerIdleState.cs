@@ -17,8 +17,7 @@ namespace States.PlayerStates
     
         public override void OnReceiveHit()
         {
-            if(stateController.CurrentHP <= 0) stateController.SwitchState(stateController.States[typeof(PlayerDeadState)]);
-            else stateController.SwitchState(stateController.States[typeof(PlayerStaggeringState)]);
+            
         }
 
         public override void Enter()
